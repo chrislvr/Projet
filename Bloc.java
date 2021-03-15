@@ -5,16 +5,16 @@ import java.awt.Color;
 public abstract class Bloc extends Entite {
 
     public Bloc(Coordonnee c) {
-        super(new Hitbox(1, 1), c, 0);
+        super(new Hitbox(2, 2), c, 0);
 
     }
 
-    public Graphics renderBloc(Graphics g, int scale) {
-        g.drawRect(scale * coords.getX(), scale * coords.getY(), scale * getHitbox().getWidth(),
-                scale * getHitbox().getHeight());
+    public Graphics renderBloc(Graphics g, int scaleX, int scaleY) {
+        g.drawRect(scaleX * coords.getX(), scaleY * coords.getY(), scaleX * getHitbox().getWidth(),
+                scaleY * getHitbox().getHeight());
 
-        g.fillRect(scale * coords.getX(), scale * coords.getY(), scale * getHitbox().getWidth(),
-                scale * getHitbox().getHeight());
+        g.fillRect(scaleX * coords.getX(), scaleY * coords.getY(), scaleX * getHitbox().getWidth(),
+                scaleY * getHitbox().getHeight());
         return g;
     }
 }
