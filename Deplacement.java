@@ -1,7 +1,9 @@
+
 import java.awt.Frame;
 
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -31,6 +33,7 @@ public class Deplacement extends Frame implements KeyListener, ActionListener {
     public Deplacement(Stage s) {
         stage = s;
         setSize(1185, 670);
+
         addKeyListener(this);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
@@ -38,6 +41,13 @@ public class Deplacement extends Frame implements KeyListener, ActionListener {
             }
         });
     }
+  
+      public void paint(Graphics personnage) {
+        personnage.drawRect(x, y, w, h);
+        personnage.setColor(Color.ORANGE);
+        personnage.fillRect(x, y, w, h);
+    }
+
 
     public void keyPressed(KeyEvent ke) {
         int keyCode = ke.getKeyCode();
@@ -68,6 +78,7 @@ public class Deplacement extends Frame implements KeyListener, ActionListener {
             p.getCoordonnee().setX(p.getCoordonnee().getX() + vel);
             System.out.println(p.getCoordonnee().getX() + ", " + p.getCoordonnee().getY());
             break;
+        
         }
         repaint();
     }
@@ -77,6 +88,7 @@ public class Deplacement extends Frame implements KeyListener, ActionListener {
 
     public void keyReleased(KeyEvent ke) {
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -1,20 +1,22 @@
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.Timer;
+import java.util.Timer; //Timer type Java simple
+import java.util.TimerTask; // Permet d'associer une tâche à accomplir au Timer
 
 
 public class MouvementKeyListener extends Frame implements KeyListener, ActionListener {
 
     int x, y, w, h;
     int pas = 10; // Le pas du personnage
-    int t = pas;
+
     Graphics personnage;
-   // final Timer saut = new Timer(100,this);
+
     
     final int height = 700;
     final int width = 1000;
-    final Timer saut = new Timer(100,this);
+    Timer timer = new Timer();
+    
     public MouvementKeyListener(int vx, int vy, int vw, int vh) {
 
         x = vx;
@@ -41,15 +43,37 @@ public class MouvementKeyListener extends Frame implements KeyListener, ActionLi
     }
 
     public void keyPressed(KeyEvent ke) {
-        int keyCode = ke.getKeyCode();
+        
+int keyCode = ke.getKeyCode();
         
         
         
         switch (keyCode) {
             case KeyEvent.VK_UP:
-            	saut.setActionCommand("Saut");
-            		saut.stop();
-            		saut.start();
+            	timer.schedule(new TimerTask() { //mise en place du Timer et de ses instructions
+            		int i = 6; //compteur
+					@Override
+					public void run() { //execution de la tâche à accomplir
+						//int pas = t;
+						
+						
+							i--;
+							System.out.println("i = " + i); //simple repère
+						if((y<h)||(y>height-h)) { //si le rectangle dépasse les frontières
+							cancel(); // on arrête le Timer
+						}
+						
+						y = y-2*pas; //le moins (-) pour monter dans la fenêtre, càd, le saut en lui même
+						repaint();
+						
+						if (i==0) cancel(); //à la fin du compteur on arrête le timer
+					}						//sans timer, les instructions tournent de manière infinie
+            		
+            	}, 0, 5); //le 0 indique au bout de combien de temps on veut que le timer s'actionne
+            			  //ici on veut qu'il s'actionne instantanément
+            			  //le 5 indique la fréquence en millisecondes
+            			  //càd que toutes les 5 ms, on execute les instructions du run
+            	
             	
                 break;
             case KeyEvent.VK_DOWN:
@@ -67,52 +91,64 @@ public class MouvementKeyListener extends Frame implements KeyListener, ActionLi
                 break;
             
         }
-        
    
 	}
     	
     	
     
     public void keyTyped(KeyEvent ke) {
-
+    	
     }
 
     public void keyReleased(KeyEvent ke) {
-    	int keyCode = ke.getKeyCode();
-    	switch(keyCode) {
-    	case KeyEvent.VK_UP:
-    		//saut.setActionCommand("Arr�t");
-    		//saut.stop();
-    		//saut.start();
+    	
+int keyCode = ke.getKeyCode();
+        
+        
+        
+        switch (keyCode) {
+        case KeyEvent.VK_UP:
+        	timer.schedule(new TimerTask() {//ici c'est presque similaire au KeyPressed
+        		int i = 6;					//le KeyReleased s'enclenche lorsqu'on relache la touche
+				@Override
+				public void run() {
+					//int pas = t;
+					
+					
+						i--;
+						System.out.println("i = " + i);
+					if((y<h)||(y>height-h)) {
+						cancel();
+					}
+					
+					y = y+2*pas; //le plus (+) pour l'attérissage
+					repaint();
+					
+					if (i==0) cancel();
+				}
+        		
+        	}, 30, 5); //ici, on doit attendre 30 ms pour que ça s'execute car le run du KeyPressed
+        				// s'execute 6 fois toutes les 5ms => 6*5 = 30
+        }
+    		
+    		
     		
     		
     		
     	}
     		
-    }
+    
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int ret = 0;
-		if(e.getActionCommand().equals("Saut")) {
-			if((ret<200000)&&(t>0)) {
-				ret++;
-    		if((y<h)||(y>height-h)) {t=-t;}
-    		
-    		y = y-2*t;
-    		
-    		repaint();
-			}
 		
-	}
-		if(e.getActionCommand().equals("Arr�t")) {
-			
 		
+		 
 	}
     
 }
     	
-}
+
 
     
 

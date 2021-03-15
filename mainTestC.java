@@ -4,6 +4,8 @@ import java.util.Scanner;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 public class mainTestC {
+public Perso perso;
+public Bloc bloc1;
 @SuppressWarnings("deprecation")
 public static void main(String[] args) throws Exception {
 /*String rep = "";
@@ -18,6 +20,11 @@ Scanner scan = new Scanner(System.in);
       int w = 50;
       int h = 50;
       new MouvementKeyListener(x, y, w, h).show();
+	//Détection contact
+		if(this.perso.collisionAvant(bloc1) == true){
+			this.perso.MouvementKeyListener(false); 
+			this.dx = 0;
+		}
 /*try{
 	Platform.runLater(new Runnable() {
 
