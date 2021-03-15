@@ -1,8 +1,8 @@
 public abstract class Entite {
     // private <?> Skin; ????
-    private Hitbox hitbox;
-    private Coordonnee coords;
-    private int maxSpeed;
+    protected Hitbox hitbox;
+    protected Coordonnee coords;
+    protected int maxSpeed;
 
     public Entite(Hitbox h, Coordonnee c, int ms) {
         this.hitbox = h;
