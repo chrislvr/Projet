@@ -42,12 +42,6 @@ public class Deplacement extends Frame implements KeyListener, ActionListener {
         });
     }
   
-      public void paint(Graphics personnage) {
-        personnage.drawRect(x, y, w, h);
-        personnage.setColor(Color.ORANGE);
-        personnage.fillRect(x, y, w, h);
-    }
-
 
     public void keyPressed(KeyEvent ke) {
         int keyCode = ke.getKeyCode();
