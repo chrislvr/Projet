@@ -9,7 +9,7 @@ public class Dirt extends Bloc {
     }
 
     @Override
-    public Graphics renderBloc(Graphics g, int scale) {
+    public Graphics renderBloc(Graphics g, int scaleX, int ScaleY) {
         // TODO Auto-generated method stub
         float[] cols = new float[3];
         // Color.RGBtoHSB(132, 78, 33, cols);
@@ -17,6 +17,6 @@ public class Dirt extends Bloc {
 
         g.setColor(Color.getHSBColor(cols[0], cols[1], cols[2]));
 
-        return super.renderBloc(g, scale);
+        return super.renderBloc(g, scaleX, ScaleY);
     }
 }

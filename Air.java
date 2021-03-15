@@ -8,7 +8,7 @@ public class Air extends Bloc {
         // TODO Auto-generated constructor stub
     }
 
-    public Graphics renderBloc(Graphics g, int scale) {
+    public Graphics renderBloc(Graphics g, int scaleX, int scaleY) {
         float[] cols = new float[3];
 
         // Color.RGBtoHSB(33, 142, 201, cols);
@@ -16,7 +16,7 @@ public class Air extends Bloc {
 
         g.setColor(Color.getHSBColor(cols[0], cols[1], cols[2]));
         // g.setColor(Color.CYAN);
-        return super.renderBloc(g, scale);
+        return super.renderBloc(g, scaleX, scaleY);
 
         // g.fillRect(this.coords.getX(), this.coords.getY(),
         // this.getHitbox().getWidth(), this.getHitbox().getHeight());

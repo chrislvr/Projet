@@ -10,9 +10,12 @@ import java.awt.Color;
 
 public class Stage {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
     final double width = screenSize.getWidth();
     final double height = screenSize.getHeight();
-    final int scale = (int) height / 11;
+    final int SCALEX = (int) width / 22;
+    final int SCALEY = (int) height / 11;
+
     protected List<Bloc> stageRep;
 
     public Stage(File stage) throws IOException {
@@ -62,7 +65,7 @@ public class Stage {
             public void paint(Graphics g) {
 
                 for (Bloc e : stageRep) {
-                    g = e.renderBloc(g, scale);
+                    g = e.renderBloc(g, SCALEX, SCALEY);
 
                 }
             }
