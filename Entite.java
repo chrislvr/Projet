@@ -25,4 +25,9 @@ public abstract class Entite {
     public Hitbox getHitbox() {
         return this.hitbox;
     }
+
+    public Coordonnee getCoordonnee() {
+        return this.coords;
+    }
+
 }
