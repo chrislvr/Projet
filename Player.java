@@ -31,14 +31,21 @@ public class Player extends Entite {
         return this.name;
     }
 
-    public Graphics renderPlayer(Graphics g, int scaleX, int scaleY) {
-        g.drawRect(scaleX * coords.getX(), scaleY * coords.getY(), scaleX * getHitbox().getWidth(),
-                scaleY * getHitbox().getHeight());
+    public Graphics renderPlayer(Graphics g, int scale) {
+        // g.drawRect(scale * coords.getX(), scale * coords.getY(), scale *
+        // getHitbox().getWidth(),
+        // scale * getHitbox().getHeight());
+
+        g.drawRect(coords.getX(), coords.getY(), getHitbox().getWidth(), getHitbox().getHeight());
 
         g.setColor(Color.BLACK);
 
-        g.fillRect(scaleX * coords.getX(), scaleY * coords.getY(), scaleX * getHitbox().getWidth(),
-                scaleY * getHitbox().getHeight());
+        // g.fillRect(scale * coords.getX(), scale * coords.getY(), scale *
+        // getHitbox().getWidth(),
+        // scale * getHitbox().getHeight());
+
+        g.fillRect(coords.getX(), coords.getY(), getHitbox().getWidth(), getHitbox().getHeight());
+
         return g;
     }
  public boolean limite(Bloc bloc){
