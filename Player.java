@@ -48,11 +48,5 @@ public class Player extends Entite {
 
         return g;
     }
- public boolean limite(Bloc bloc){
-    	if(this.moveRight() == true){
-    		if(this.x + this.width < bloc.getX() || this.x + this.width > bloc.getX() + 2 || this.y + this.height <= bloc.getY() || this.y >= bloc.getY() + bloc.getHeight()){return false;}
-    	    else{return true;} //condition du player ou il touche l'obstacle , sinon il ne le touche pas
-    	}else{return false;}	    	
-    }
 
 }
