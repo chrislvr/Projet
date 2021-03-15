@@ -10,7 +10,7 @@ public class Grass extends Bloc {
 
     // bloc vert
 
-    public Graphics renderBloc(Graphics g, int scaleX, int scaleY) {
+    public Graphics renderBloc(Graphics g, int scale) {
         // TODO Auto-generated method stub
         // g.setColor(Color.green);
 
@@ -18,7 +18,7 @@ public class Grass extends Bloc {
         Color.RGBtoHSB(55, 180, 27, cols);
 
         g.setColor(Color.getHSBColor(cols[0], cols[1], cols[2]));
-        return super.renderBloc(g, scaleX, scaleY);
+        return super.renderBloc(g, scale);
     }
 
 }

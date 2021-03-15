@@ -9,9 +9,9 @@ public class Water extends Bloc {
     }
 
     @Override
-    public Graphics renderBloc(Graphics g, int scaleX, int scaleY) {
+    public Graphics renderBloc(Graphics g, int scale) {
         // TODO Auto-generated method stub
         g.setColor(Color.blue);
-        return super.renderBloc(g, scaleX, scaleY);
+        return super.renderBloc(g, scale);
     }
 }
