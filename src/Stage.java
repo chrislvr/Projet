@@ -4,6 +4,9 @@ import java.awt.Toolkit;
 import java.awt.Dimension;
 
 import java.util.List;
+
+import javax.swing.plaf.basic.BasicComboBoxUI.ItemHandler;
+
 import java.awt.Frame;
 import java.awt.Graphics;
 
@@ -13,11 +16,13 @@ public class Stage {
     final double height = screenSize.getHeight();
     final int scale = (int) height / 17;
     protected List<Bloc> stageRep;
+    protected List<Item> itemRep;
+    public int index; // index du bloc ou se trouve le joueur
 
-    public Stage(File stage) throws IOException {
+    public Stage(File stage, File items) throws IOException {
         File f = stage;
         stageRep = new ArrayList<Bloc>();
-
+        itemRep = new ArrayList<Item>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(f));
             int ligne = 0;// Compteur de lignes
@@ -54,6 +59,55 @@ public class Stage {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+
+        ///////////////////////////////////
+
+        f = items;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            int ligne = 0;// Compteur de lignes
+            Item item;
+            int idx = 0;
+            while (br.ready()) {
+                String l = br.readLine();
+
+                for (int i = 0; i < l.length(); i++, idx++) {
+                    Coordonnee tempCord = new Coordonnee(i, ligne);
+                    switch (l.charAt(i)) {
+                    case ('1'):
+                        item = new Piege(tempCord);
+                        itemRep.add(item);
+                        break;
+                    case ('2'):
+                        item = new Piece(tempCord);
+                        itemRep.add(item);
+                        break;
+
+                    case ('3'):
+                        item = new Flag(tempCord);
+                        itemRep.add(item);
+                        break;
+
+                    case ('4'):
+                        item = new Depart(tempCord);
+                        itemRep.add(item);
+                        this.index = idx;
+                        break;
+
+                    default:
+                        break;
+                    }
+
+                }
+                ligne += 1;
+            }
+
+            br.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
+
     }
 
     public Frame toFrame() {
@@ -63,9 +117,14 @@ public class Stage {
                     g = e.renderBloc(g, scale);
 
                 }
+                for (Item e : itemRep) {
+                    g = e.renderItem(g, scale);
+
+                }
                 p.renderPlayer(g, scale);
 
             }
+
         };
         return f;
     }
