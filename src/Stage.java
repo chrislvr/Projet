@@ -15,9 +15,10 @@ public class Stage {
     final double width = screenSize.getWidth();
     final double height = screenSize.getHeight();
     final int scale = (int) height / 17;
-    protected List<Bloc> stageRep;
-    protected List<Item> itemRep;
+    public List<Bloc> stageRep;
+    public List<Item> itemRep;
     public int index; // index du bloc ou se trouve le joueur
+    private int indexDepart;
 
     public Stage(File stage, File items) throws IOException {
         File f = stage;
@@ -92,9 +93,11 @@ public class Stage {
                         item = new Depart(tempCord);
                         itemRep.add(item);
                         this.index = idx;
+                        this.indexDepart = this.index;
                         break;
 
                     default:
+                        itemRep.add(null);
                         break;
                     }
 
@@ -107,7 +110,10 @@ public class Stage {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+    }
 
+    public int getIndexDepart() {
+        return indexDepart;
     }
 
     public Frame toFrame() {
@@ -115,16 +121,14 @@ public class Stage {
             public void paint(Graphics g) {
                 for (Bloc e : stageRep) {
                     g = e.renderBloc(g, scale);
-
                 }
                 for (Item e : itemRep) {
-                    g = e.renderItem(g, scale);
-
+                    if (e != null) {
+                        g = e.renderItem(g, scale);
+                    }
                 }
                 p.renderPlayer(g, scale);
-
             }
-
         };
         return f;
     }
