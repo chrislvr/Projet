@@ -32,17 +32,24 @@ public class Player extends Entite {
     }
 
     public Graphics renderPlayer(Graphics g, int scale) {
-        // g.drawRect(scale * coords.getX(), scale * coords.getY(), scale *
-        // getHitbox().getWidth(),
-        // scale * getHitbox().getHeight());
 
         g.drawRect(coords.getX(), coords.getY(), getHitbox().getWidth(), getHitbox().getHeight());
 
-        g.setColor(Color.BLACK);
-
-        // g.fillRect(scale * coords.getX(), scale * coords.getY(), scale *
-        // getHitbox().getWidth(),
-        // scale * getHitbox().getHeight());
+        if (ToStringSelectionPlayer.col == "Rouge") {
+            g.setColor(Color.RED);
+        } else if (ToStringSelectionPlayer.col == "Jaune") {
+            g.setColor(Color.YELLOW);
+        } else if (ToStringSelectionPlayer.col == "Bleu") {
+            g.setColor(Color.BLUE);
+        } else if (ToStringSelectionPlayer.col == "Vert") {
+            g.setColor(Color.GREEN);
+        } else if (ToStringSelectionPlayer.col == "Noir") {
+            g.setColor(Color.BLACK);
+        } else if (ToStringSelectionPlayer.col == "Orange") {
+            g.setColor(Color.ORANGE);
+        } else {
+            g.setColor(Color.BLACK);
+        }
 
         g.fillRect(coords.getX(), coords.getY(), getHitbox().getWidth(), getHitbox().getHeight());
 
