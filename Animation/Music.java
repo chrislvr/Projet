@@ -1,8 +1,4 @@
-import java.io.File;
 
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 public class Music extends Medias {
 
 

@@ -50,7 +50,7 @@ int keyCode = ke.getKeyCode();
         switch (keyCode) {
             case KeyEvent.VK_UP:
             	timer.schedule(new TimerTask() { //mise en place du Timer et de ses instructions
-            		int i = 6; //compteur
+            		int i = 10; //compteur
 					@Override
 					public void run() { //execution de la tâche à accomplir
 						//int pas = t;
@@ -62,16 +62,16 @@ int keyCode = ke.getKeyCode();
 							cancel(); // on arrête le Timer
 						}
 						
-						y = y-2*pas; //le moins (-) pour monter dans la fenêtre, càd, le saut en lui même
+						y = y-pas; //le moins (-) pour monter dans la fenêtre, càd, le saut en lui même
 						repaint();
 						
 						if (i==0) cancel(); //à la fin du compteur on arrête le timer
 					}						//sans timer, les instructions tournent de manière infinie
             		
-            	}, 0, 5); //le 0 indique au bout de combien de temps on veut que le timer s'actionne
+            	}, 0, 15); //le 0 indique au bout de combien de temps on veut que le timer s'actionne
             			  //ici on veut qu'il s'actionne instantanément
-            			  //le 5 indique la fréquence en millisecondes
-            			  //càd que toutes les 5 ms, on execute les instructions du run
+            			  //le 15 indique la fréquence en millisecondes
+            			  //càd que toutes les 15 ms, on execute les instructions du run
             	
             	
                 break;
@@ -108,7 +108,7 @@ int keyCode = ke.getKeyCode();
         switch (keyCode) {
         case KeyEvent.VK_UP:
         	timer.schedule(new TimerTask() {//ici c'est presque similaire au KeyPressed
-        		int i = 6;					//le KeyReleased s'enclenche lorsqu'on relache la touche
+        		int i = 10;					//le KeyReleased s'enclenche lorsqu'on relache la touche
 				@Override
 				public void run() {
 					//int pas = t;
@@ -120,14 +120,13 @@ int keyCode = ke.getKeyCode();
 						cancel();
 					}
 					
-					y = y+2*pas; //le plus (+) pour l'attérissage
+					y = y+pas; //le plus (+) pour l'attérissage
 					repaint();
 					
 					if (i==0) cancel();
 				}
         		
-        	}, 30, 5); //ici, on doit attendre 30 ms pour que ça s'execute car le run du KeyPressed
-        				// s'execute 6 fois toutes les 5ms => 6*5 = 30
+        	}, 0, 15); 
         }
     		
     		

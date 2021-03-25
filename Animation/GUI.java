@@ -1,18 +1,7 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javafx.scene.image.Image;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,7 +21,7 @@ public class GUI implements ActionListener{
 	GroupLayout g;
 	boolean son = false;
 	Music m = new Music();
-	Backgrounds b = new Backgrounds();
+	
 	MouvementKeyListener ml;
 	
 	
@@ -79,13 +68,7 @@ public class GUI implements ActionListener{
 		
 		
 		
-		//panel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
-		//panel.setLayout(new FlowLayout());
-		//panel.add(play_music);
-		//panel.add(stop_music);
-		//panel.add(exit);
-		//panel.add(label);
-		//panel.add(bg,0);
+		
 		
 		
 		
@@ -99,7 +82,6 @@ public class GUI implements ActionListener{
 		frame.pack();
 		frame.setVisible(true);
 
-		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\cmayi\\eclipse-workspace\\Animation\\Ressources\\Images\\Menu.gif"));
 		
 	
 		
@@ -110,6 +92,7 @@ public class GUI implements ActionListener{
 	
 	
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		play_music.setEnabled(true); stop_music.setEnabled(false);
@@ -129,6 +112,7 @@ public class GUI implements ActionListener{
 		if("jouer".equals(e.getActionCommand())) {
 			m.ready();
 			ml.show();
+			panel.setVisible(false);
 			if(son) {
 				m.stop1();
 				m.lvl1();
@@ -142,6 +126,6 @@ public class GUI implements ActionListener{
 		else stop_music.setEnabled(true);
 		
 	}
-	
+
 	
 }
